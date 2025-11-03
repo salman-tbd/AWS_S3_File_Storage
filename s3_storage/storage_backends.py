@@ -12,7 +12,7 @@ class AustraliaMediaStorage(S3Boto3Storage):
     S3 Storage for Australian region (Sydney: ap-southeast-2)
     Use for Australian client documents
     """
-    bucket_name = config('AWS_STORAGE_BUCKET_NAME_AU', default='migration-zone-docs-au')
+    bucket_name = config('AWS_STORAGE_BUCKET_NAME_AU', default='evol-assistant-docs-au')
     region_name = config('AWS_S3_REGION_NAME_AU', default='ap-southeast-2')
     encryption = config('AWS_S3_ENCRYPTION', default='AES256')
     file_overwrite = False
@@ -32,7 +32,7 @@ class IndiaMediaStorage(S3Boto3Storage):
     S3 Storage for India region (Mumbai: ap-south-1)
     Use for Indian client documents
     """
-    bucket_name = config('AWS_STORAGE_BUCKET_NAME_IN', default='migration-zone-docs-in')
+    bucket_name = config('AWS_STORAGE_BUCKET_NAME_IN', default='evol-assistant-docs-in')
     region_name = config('AWS_S3_REGION_NAME_IN', default='ap-south-1')
     encryption = config('AWS_S3_ENCRYPTION', default='AES256')
     file_overwrite = False
@@ -52,7 +52,7 @@ class ProcessedDataStorage(S3Boto3Storage):
     Storage for AI-processed data (OCR results, extracted metadata)
     Can use cheaper region or same as primary
     """
-    bucket_name = config('AWS_STORAGE_BUCKET_NAME_AU', default='migration-zone-docs-au')
+    bucket_name = config('AWS_STORAGE_BUCKET_NAME_AU', default='evol-assistant-docs-au')
     region_name = config('AWS_S3_REGION_NAME_AU', default='ap-southeast-2')
     file_overwrite = True  # Allow overwriting processed files
     default_acl = None

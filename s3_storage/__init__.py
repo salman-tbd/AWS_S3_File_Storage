@@ -1,5 +1,5 @@
 """
-S3 Storage Package for Migration Zone CRM
+S3 Storage Package for Evol Assistant CMS
 """
 
 __version__ = '1.0.0'

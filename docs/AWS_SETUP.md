@@ -42,7 +42,7 @@ You'll create:
 
 | Setting | Value |
 |---------|-------|
-| **Bucket name** | `migration-zone-docs-au` (must be globally unique) |
+| **Bucket name** | `evol-assistant-docs-au` (must be globally unique) |
 | **AWS Region** | **Asia Pacific (Sydney)** `ap-southeast-2` |
 | **Block all public access** | ✅ **Enabled** (keep private) |
 | **Bucket Versioning** | ✅ **Enable** (recover deleted files) |
@@ -59,7 +59,7 @@ Repeat the process with:
 
 | Setting | Value |
 |---------|-------|
-| **Bucket name** | `migration-zone-docs-in` |
+| **Bucket name** | `evol-assistant-docs-in` |
 | **AWS Region** | **Asia Pacific (Mumbai)** `ap-south-1` |
 | **All other settings** | Same as Australia bucket |
 
@@ -71,7 +71,7 @@ Repeat the process with:
 
 1. Go to **IAM** service in AWS Console
 2. Click **"Users"** → **"Add users"**
-3. **User name:** `migration-zone-s3-user`
+3. **User name:** `evol-assistant-s3-user`
 4. **Access type:** ✅ **Programmatic access** (API, CLI, SDK)
 5. Click **"Next: Permissions"**
 
@@ -96,8 +96,8 @@ Repeat the process with:
         "s3:GetBucketLocation"
       ],
       "Resource": [
-        "arn:aws:s3:::migration-zone-docs-au",
-        "arn:aws:s3:::migration-zone-docs-in"
+        "arn:aws:s3:::evol-assistant-docs-au",
+        "arn:aws:s3:::evol-assistant-docs-in"
       ]
     },
     {
@@ -110,8 +110,8 @@ Repeat the process with:
         "s3:GetObjectVersion"
       ],
       "Resource": [
-        "arn:aws:s3:::migration-zone-docs-au/*",
-        "arn:aws:s3:::migration-zone-docs-in/*"
+        "arn:aws:s3:::evol-assistant-docs-au/*",
+        "arn:aws:s3:::evol-assistant-docs-in/*"
       ]
     }
   ]
@@ -119,8 +119,8 @@ Repeat the process with:
 ```
 
 5. Click **"Next: Tags"**
-6. **Policy name:** `MigrationZoneS3Policy`
-7. **Description:** `S3 access for Migration Zone document storage`
+6. **Policy name:** `EvolAssistantS3Policy`
+7. **Description:** `S3 access for Evol Assistant CMS document storage`
 8. Click **"Create policy"**
 
 ---
@@ -129,7 +129,7 @@ Repeat the process with:
 
 1. Go back to **"Add user"** tab
 2. Refresh the policy list
-3. Search for `MigrationZoneS3Policy`
+3. Search for `EvolAssistantS3Policy`
 4. ✅ Check the policy
 5. Click **"Next: Tags"** (skip tags)
 6. Click **"Next: Review"**
@@ -163,7 +163,7 @@ Automatically move old documents to cheaper storage classes.
 
 ### **A. Australia Bucket Lifecycle**
 
-1. Go to S3 → **migration-zone-docs-au**
+1. Go to S3 → **evol-assistant-docs-au**
 2. Click **"Management"** tab
 3. Click **"Create lifecycle rule"**
 
@@ -194,7 +194,7 @@ Automatically move old documents to cheaper storage classes.
 
 ### **B. India Bucket Lifecycle**
 
-Repeat the same lifecycle policy for `migration-zone-docs-in`.
+Repeat the same lifecycle policy for `evol-assistant-docs-in`.
 
 ---
 
@@ -202,13 +202,13 @@ Repeat the same lifecycle policy for `migration-zone-docs-in`.
 
 ### **A. Enable Access Logging**
 
-1. Create a **logging bucket**: `migration-zone-logs`
+1. Create a **logging bucket**: `evol-assistant-logs`
 2. For each document bucket:
    - Click **"Properties"** tab
    - Scroll to **"Server access logging"**
    - Click **"Edit"**
    - ✅ Enable
-   - **Target bucket:** `migration-zone-logs`
+   - **Target bucket:** `evol-assistant-logs`
    - **Target prefix:** `au-docs-logs/` or `in-docs-logs/`
    - Click **"Save changes"**
 
@@ -302,24 +302,24 @@ aws configure
 echo "Test document" > test.txt
 
 # Upload to Australia bucket
-aws s3 cp test.txt s3://migration-zone-docs-au/test/test.txt
+aws s3 cp test.txt s3://evol-assistant-docs-au/test/test.txt
 
 # List files
-aws s3 ls s3://migration-zone-docs-au/test/
+aws s3 ls s3://evol-assistant-docs-au/test/
 
 # Download file
-aws s3 cp s3://migration-zone-docs-au/test/test.txt downloaded.txt
+aws s3 cp s3://evol-assistant-docs-au/test/test.txt downloaded.txt
 
 # Delete file
-aws s3 rm s3://migration-zone-docs-au/test/test.txt
+aws s3 rm s3://evol-assistant-docs-au/test/test.txt
 ```
 
 **Expected Output:**
 ```
-upload: ./test.txt to s3://migration-zone-docs-au/test/test.txt
+upload: ./test.txt to s3://evol-assistant-docs-au/test/test.txt
 2025-10-31 10:30:00      13 test.txt
-download: s3://migration-zone-docs-au/test/test.txt to ./downloaded.txt
-delete: s3://migration-zone-docs-au/test/test.txt
+download: s3://evol-assistant-docs-au/test/test.txt to ./downloaded.txt
+delete: s3://evol-assistant-docs-au/test/test.txt
 ```
 
 ✅ If all commands work, your setup is correct!
@@ -329,8 +329,8 @@ delete: s3://migration-zone-docs-au/test/test.txt
 ## 🧹 Step 9: Clean Up Test Files
 
 ```bash
-aws s3 rm s3://migration-zone-docs-au/test/ --recursive
-aws s3 rm s3://migration-zone-docs-in/test/ --recursive
+aws s3 rm s3://evol-assistant-docs-au/test/ --recursive
+aws s3 rm s3://evol-assistant-docs-in/test/ --recursive
 ```
 
 ---

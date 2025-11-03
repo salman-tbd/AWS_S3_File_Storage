@@ -10,7 +10,7 @@ import os
 # Set default Django settings
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings')
 
-app = Celery('migration_zone')
+app = Celery('evol_assistant')
 
 # Load config from Django settings
 app.config_from_object('django.conf:settings', namespace='CELERY')

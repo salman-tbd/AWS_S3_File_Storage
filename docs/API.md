@@ -244,13 +244,13 @@ curl -X POST "http://localhost:8000/api/storage/documents/" \
   "file_size_mb": 2.0,
   "file_type": "application/pdf",
   "original_filename": "passport.pdf",
-  "s3_bucket": "migration-zone-docs-au",
+  "s3_bucket": "evol-assistant-docs-au",
   "s3_key": "documents/au/clients/123e.../passport/20251031_passport.pdf",
   "s3_region": "ap-southeast-2",
   "status": "uploaded",
   "uploaded_at": "2025-10-31T10:30:00Z",
   "uploaded_by": { ... },
-  "download_url": "https://migration-zone-docs-au.s3.amazonaws.com/..."
+  "download_url": "https://evol-assistant-docs-au.s3.amazonaws.com/..."
 }
 ```
 

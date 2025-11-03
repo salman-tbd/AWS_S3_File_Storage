@@ -286,7 +286,7 @@ You now have a **complete, production-ready S3 storage module** ready to merge i
 
 **Questions?** Check the documentation in `docs/` folder
 
-**Good luck with your Migration Zone CRM!** 🚀
+**Good luck with your Evol Assistant CMS!** 🚀
 
 ---
 
