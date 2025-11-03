@@ -6,7 +6,7 @@
 
 ### ✅ **Complete S3 Storage Module**
 A production-ready Django app for document management in Evol Assistant CMS with:
-- Multi-region S3 storage (Australia + India)
+- Single-region S3 storage (Mumbai, India)
 - Secure file upload/download with presigned URLs
 - AI-powered document processing (OCR ready)
 - REST API with DRF
@@ -113,11 +113,11 @@ aws-s3-storage/
 - ✅ Access audit logging
 - ✅ Authentication required
 
-### **Multi-Region** 🌏
-- ✅ Australia (Sydney): ap-southeast-2
-- ✅ India (Mumbai): ap-south-1
-- ✅ Data residency compliance
-- ✅ Auto-select based on client region
+### **Region Configuration** 🌏
+- ✅ Mumbai, India: ap-south-1
+- ✅ Cost-optimized single region
+- ✅ Global CDN-ready
+- ✅ Scalable architecture
 
 ### **Document Processing** 🤖
 - ✅ Async processing with Celery

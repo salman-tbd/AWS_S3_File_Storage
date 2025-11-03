@@ -1,19 +1,19 @@
 """
 AWS S3 Storage Backend Module
-Multi-region support for Australia and India
+Single region configuration for Mumbai, India
 """
 
 from storages.backends.s3boto3 import S3Boto3Storage
 from decouple import config
 
 
-class AustraliaMediaStorage(S3Boto3Storage):
+class MediaStorage(S3Boto3Storage):
     """
-    S3 Storage for Australian region (Sydney: ap-southeast-2)
-    Use for Australian client documents
+    S3 Storage for Mumbai region (ap-south-1)
+    Use for all client documents
     """
-    bucket_name = config('AWS_STORAGE_BUCKET_NAME_AU', default='evol-assistant-docs-au')
-    region_name = config('AWS_S3_REGION_NAME_AU', default='ap-southeast-2')
+    bucket_name = config('AWS_STORAGE_BUCKET_NAME', default='evol-assistant-docs')
+    region_name = config('AWS_S3_REGION_NAME', default='ap-south-1')
     encryption = config('AWS_S3_ENCRYPTION', default='AES256')
     file_overwrite = False
     default_acl = None  # Private by default
@@ -24,36 +24,16 @@ class AustraliaMediaStorage(S3Boto3Storage):
     
     def __init__(self, **settings):
         super().__init__(**settings)
-        self.location = 'documents/au'  # Folder prefix in S3
-
-
-class IndiaMediaStorage(S3Boto3Storage):
-    """
-    S3 Storage for India region (Mumbai: ap-south-1)
-    Use for Indian client documents
-    """
-    bucket_name = config('AWS_STORAGE_BUCKET_NAME_IN', default='evol-assistant-docs-in')
-    region_name = config('AWS_S3_REGION_NAME_IN', default='ap-south-1')
-    encryption = config('AWS_S3_ENCRYPTION', default='AES256')
-    file_overwrite = False
-    default_acl = None
-    custom_domain = False
-    object_parameters = {
-        'CacheControl': 'max-age=86400',
-    }
-    
-    def __init__(self, **settings):
-        super().__init__(**settings)
-        self.location = 'documents/in'
+        self.location = 'documents'  # Folder prefix in S3
 
 
 class ProcessedDataStorage(S3Boto3Storage):
     """
     Storage for AI-processed data (OCR results, extracted metadata)
-    Can use cheaper region or same as primary
+    Uses same bucket with different folder
     """
-    bucket_name = config('AWS_STORAGE_BUCKET_NAME_AU', default='evol-assistant-docs-au')
-    region_name = config('AWS_S3_REGION_NAME_AU', default='ap-southeast-2')
+    bucket_name = config('AWS_STORAGE_BUCKET_NAME', default='evol-assistant-docs')
+    region_name = config('AWS_S3_REGION_NAME', default='ap-south-1')
     file_overwrite = True  # Allow overwriting processed files
     default_acl = None
     
@@ -62,17 +42,12 @@ class ProcessedDataStorage(S3Boto3Storage):
         self.location = 'processed'  # Separate folder for processed data
 
 
-def get_storage_backend(region='au'):
+def get_storage_backend():
     """
-    Factory function to get appropriate storage backend
+    Factory function to get storage backend
     
-    Args:
-        region (str): 'au' for Australia, 'in' for India
-        
     Returns:
-        S3Boto3Storage: Configured storage backend
+        S3Boto3Storage: Configured storage backend for Mumbai region
     """
-    if region.lower() == 'in':
-        return IndiaMediaStorage()
-    return AustraliaMediaStorage()
+    return MediaStorage()
 

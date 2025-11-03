@@ -5,7 +5,7 @@
 **Purpose:** Modular S3 document storage for Evol Assistant CMS
 
 This module provides production-ready AWS S3 integration for the Evol Assistant platform with:
-- ✅ Multi-region support (Australia + India)
+- ✅ Single-region setup (Mumbai, India)
 - ✅ Secure document upload/download
 - ✅ Celery-based async document processing
 - ✅ AI-ready document analysis
@@ -23,7 +23,7 @@ pip install -r requirements.txt
 
 ### 2. Set Up AWS S3
 Follow `docs/AWS_SETUP.md` to:
-- Create S3 buckets (Australia + India regions)
+- Create S3 bucket (Mumbai region)
 - Create IAM user with appropriate permissions
 - Get AWS access keys
 
@@ -33,8 +33,8 @@ cp env.example .env
 # Edit .env with your AWS credentials:
 # AWS_ACCESS_KEY_ID=your_key
 # AWS_SECRET_ACCESS_KEY=your_secret
-# AWS_STORAGE_BUCKET_NAME_AU=bucket-name-au
-# AWS_STORAGE_BUCKET_NAME_IN=bucket-name-in
+# AWS_STORAGE_BUCKET_NAME=bucket-name
+# AWS_S3_REGION_NAME=ap-south-1
 ```
 
 ### 4. Integrate with Your Django App
@@ -93,10 +93,10 @@ s3_storage/
 - File type validation
 - Size limits enforcement
 
-### Multi-Region Support
-- Australia (Sydney): ap-southeast-2
-- India (Mumbai): ap-south-1
-- Data residency compliance
+### Region
+- Mumbai, India (ap-south-1)
+- Cost-optimized single region
+- Scalable for global access
 
 ---
 

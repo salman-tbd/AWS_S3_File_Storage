@@ -30,9 +30,7 @@ You'll create:
 
 ---
 
-## 📦 Step 2: Create S3 Buckets
-
-### **A. Australia Region Bucket**
+## 📦 Step 2: Create S3 Bucket
 
 1. **Sign in** to AWS Console
 2. Go to **S3** service
@@ -42,26 +40,14 @@ You'll create:
 
 | Setting | Value |
 |---------|-------|
-| **Bucket name** | `evol-assistant-docs-au` (must be globally unique) |
-| **AWS Region** | **Asia Pacific (Sydney)** `ap-southeast-2` |
+| **Bucket name** | `evol-assistant-docs` (must be globally unique) |
+| **AWS Region** | **Asia Pacific (Mumbai)** `ap-south-1` |
 | **Block all public access** | ✅ **Enabled** (keep private) |
 | **Bucket Versioning** | ✅ **Enable** (recover deleted files) |
 | **Default encryption** | ✅ **Enable** - SSE-S3 (AES-256) |
 | **Object Lock** | ❌ Disable (not needed) |
 
 4. Click **"Create bucket"**
-
----
-
-### **B. India Region Bucket**
-
-Repeat the process with:
-
-| Setting | Value |
-|---------|-------|
-| **Bucket name** | `evol-assistant-docs-in` |
-| **AWS Region** | **Asia Pacific (Mumbai)** `ap-south-1` |
-| **All other settings** | Same as Australia bucket |
 
 ---
 
@@ -96,8 +82,7 @@ Repeat the process with:
         "s3:GetBucketLocation"
       ],
       "Resource": [
-        "arn:aws:s3:::evol-assistant-docs-au",
-        "arn:aws:s3:::evol-assistant-docs-in"
+        "arn:aws:s3:::evol-assistant-docs"
       ]
     },
     {
@@ -110,8 +95,7 @@ Repeat the process with:
         "s3:GetObjectVersion"
       ],
       "Resource": [
-        "arn:aws:s3:::evol-assistant-docs-au/*",
-        "arn:aws:s3:::evol-assistant-docs-in/*"
+        "arn:aws:s3:::evol-assistant-docs/*"
       ]
     }
   ]
@@ -161,9 +145,7 @@ AWS_SECRET_ACCESS_KEY=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
 
 Automatically move old documents to cheaper storage classes.
 
-### **A. Australia Bucket Lifecycle**
-
-1. Go to S3 → **evol-assistant-docs-au**
+1. Go to S3 → **evol-assistant-docs**
 2. Click **"Management"** tab
 3. Click **"Create lifecycle rule"**
 
@@ -186,15 +168,9 @@ Automatically move old documents to cheaper storage classes.
 **Configure:**
 1. **After 30 days:** Transition to **S3 Standard-IA**
 2. **After 90 days:** Transition to **S3 Glacier Instant Retrieval**
-3. (Optional) **After 2555 days (7 years):** Delete objects
+3. (Optional) **After 365 days (1 year):** Delete objects (if needed)
 
 4. Click **"Create rule"**
-
----
-
-### **B. India Bucket Lifecycle**
-
-Repeat the same lifecycle policy for `evol-assistant-docs-in`.
 
 ---
 
@@ -203,13 +179,13 @@ Repeat the same lifecycle policy for `evol-assistant-docs-in`.
 ### **A. Enable Access Logging**
 
 1. Create a **logging bucket**: `evol-assistant-logs`
-2. For each document bucket:
+2. Go to your document bucket **evol-assistant-docs**:
    - Click **"Properties"** tab
    - Scroll to **"Server access logging"**
    - Click **"Edit"**
    - ✅ Enable
    - **Target bucket:** `evol-assistant-logs`
-   - **Target prefix:** `au-docs-logs/` or `in-docs-logs/`
+   - **Target prefix:** `docs-logs/`
    - Click **"Save changes"**
 
 ---
@@ -301,25 +277,25 @@ aws configure
 # Create a test file
 echo "Test document" > test.txt
 
-# Upload to Australia bucket
-aws s3 cp test.txt s3://evol-assistant-docs-au/test/test.txt
+# Upload to bucket
+aws s3 cp test.txt s3://evol-assistant-docs/test/test.txt
 
 # List files
-aws s3 ls s3://evol-assistant-docs-au/test/
+aws s3 ls s3://evol-assistant-docs/test/
 
 # Download file
-aws s3 cp s3://evol-assistant-docs-au/test/test.txt downloaded.txt
+aws s3 cp s3://evol-assistant-docs/test/test.txt downloaded.txt
 
 # Delete file
-aws s3 rm s3://evol-assistant-docs-au/test/test.txt
+aws s3 rm s3://evol-assistant-docs/test/test.txt
 ```
 
 **Expected Output:**
 ```
-upload: ./test.txt to s3://evol-assistant-docs-au/test/test.txt
+upload: ./test.txt to s3://evol-assistant-docs/test/test.txt
 2025-10-31 10:30:00      13 test.txt
-download: s3://evol-assistant-docs-au/test/test.txt to ./downloaded.txt
-delete: s3://evol-assistant-docs-au/test/test.txt
+download: s3://evol-assistant-docs/test/test.txt to ./downloaded.txt
+delete: s3://evol-assistant-docs/test/test.txt
 ```
 
 ✅ If all commands work, your setup is correct!
@@ -329,15 +305,14 @@ delete: s3://evol-assistant-docs-au/test/test.txt
 ## 🧹 Step 9: Clean Up Test Files
 
 ```bash
-aws s3 rm s3://evol-assistant-docs-au/test/ --recursive
-aws s3 rm s3://evol-assistant-docs-in/test/ --recursive
+aws s3 rm s3://evol-assistant-docs/test/ --recursive
 ```
 
 ---
 
 ## 📝 Final Checklist
 
-- [ ] Created 2 S3 buckets (AU + IN)
+- [ ] Created S3 bucket (Mumbai region)
 - [ ] Enabled encryption (AES-256)
 - [ ] Enabled versioning
 - [ ] Blocked all public access

@@ -10,13 +10,9 @@ import os
 AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
 
-# Australia Region Bucket
-AWS_STORAGE_BUCKET_NAME_AU = config('AWS_STORAGE_BUCKET_NAME_AU', default='evol-assistant-docs-au')
-AWS_S3_REGION_NAME_AU = config('AWS_S3_REGION_NAME_AU', default='ap-southeast-2')
-
-# India Region Bucket
-AWS_STORAGE_BUCKET_NAME_IN = config('AWS_STORAGE_BUCKET_NAME_IN', default='evol-assistant-docs-in')
-AWS_S3_REGION_NAME_IN = config('AWS_S3_REGION_NAME_IN', default='ap-south-1')
+# S3 Bucket - Mumbai Region
+AWS_STORAGE_BUCKET_NAME = config('AWS_STORAGE_BUCKET_NAME', default='evol-assistant-docs')
+AWS_S3_REGION_NAME = config('AWS_S3_REGION_NAME', default='ap-south-1')
 
 # S3 Settings
 AWS_S3_ENCRYPTION = config('AWS_S3_ENCRYPTION', default='AES256')

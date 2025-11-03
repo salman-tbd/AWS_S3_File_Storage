@@ -83,10 +83,8 @@ from decouple import config
 
 AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
-AWS_STORAGE_BUCKET_NAME_AU = config('AWS_STORAGE_BUCKET_NAME_AU')
-AWS_S3_REGION_NAME_AU = config('AWS_S3_REGION_NAME_AU', default='ap-southeast-2')
-AWS_STORAGE_BUCKET_NAME_IN = config('AWS_STORAGE_BUCKET_NAME_IN')
-AWS_S3_REGION_NAME_IN = config('AWS_S3_REGION_NAME_IN', default='ap-south-1')
+AWS_STORAGE_BUCKET_NAME = config('AWS_STORAGE_BUCKET_NAME')
+AWS_S3_REGION_NAME = config('AWS_S3_REGION_NAME', default='ap-south-1')
 AWS_S3_ENCRYPTION = 'AES256'
 AWS_S3_FILE_OVERWRITE = False
 AWS_DEFAULT_ACL = None
@@ -114,10 +112,8 @@ Add to your `.env` file:
 # AWS S3
 AWS_ACCESS_KEY_ID=your_access_key
 AWS_SECRET_ACCESS_KEY=your_secret_key
-AWS_STORAGE_BUCKET_NAME_AU=evol-assistant-docs-au
-AWS_S3_REGION_NAME_AU=ap-southeast-2
-AWS_STORAGE_BUCKET_NAME_IN=evol-assistant-docs-in
-AWS_S3_REGION_NAME_IN=ap-south-1
+AWS_STORAGE_BUCKET_NAME=evol-assistant-docs
+AWS_S3_REGION_NAME=ap-south-1
 
 # Celery
 CELERY_BROKER_URL=redis://localhost:6379/0

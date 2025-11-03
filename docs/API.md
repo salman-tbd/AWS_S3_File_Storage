@@ -239,18 +239,18 @@ curl -X POST "http://localhost:8000/api/storage/documents/" \
   "document_type": "passport",
   "title": "Passport Front Page",
   "description": "Main identification page",
-  "file": "documents/au/clients/123e.../passport/20251031_passport.pdf",
+  "file": "documents/clients/123e.../passport/20251031_passport.pdf",
   "file_size": 2048576,
   "file_size_mb": 2.0,
   "file_type": "application/pdf",
   "original_filename": "passport.pdf",
-  "s3_bucket": "evol-assistant-docs-au",
-  "s3_key": "documents/au/clients/123e.../passport/20251031_passport.pdf",
-  "s3_region": "ap-southeast-2",
+  "s3_bucket": "evol-assistant-docs",
+  "s3_key": "documents/clients/123e.../passport/20251031_passport.pdf",
+  "s3_region": "ap-south-1",
   "status": "uploaded",
   "uploaded_at": "2025-10-31T10:30:00Z",
   "uploaded_by": { ... },
-  "download_url": "https://evol-assistant-docs-au.s3.amazonaws.com/..."
+  "download_url": "https://evol-assistant-docs.s3.ap-south-1.amazonaws.com/..."
 }
 ```
 
