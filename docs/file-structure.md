@@ -1,5 +1,7 @@
 # 📁 Project File Structure
 
+**Part of [Evol Assistant Customer Management System (CMS)](https://evolassistant.com/)**
+
 ## Production-Ready S3 Storage Module
 
 ```

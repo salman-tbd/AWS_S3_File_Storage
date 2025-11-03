@@ -1,5 +1,7 @@
 # ⚡ QUICK START GUIDE
 
+**Part of [Evol Assistant Customer Management System (CMS)](https://evolassistant.com/)**
+
 **Get up and running in 15 minutes!**
 
 ---

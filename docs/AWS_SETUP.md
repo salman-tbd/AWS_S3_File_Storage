@@ -1,6 +1,8 @@
 # AWS S3 Setup Guide
 
-Complete guide to set up AWS S3 buckets for the Migration Zone document storage system.
+**Part of [Evol Assistant Customer Management System (CMS)](https://evolassistant.com/)**
+
+Complete guide to set up AWS S3 buckets for the Evol Assistant CMS document storage system.
 
 ---
 

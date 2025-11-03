@@ -1,9 +1,11 @@
 # 🚀 DEPLOYMENT COMPLETE!
 
+**Part of [Evol Assistant Customer Management System (CMS)](https://evolassistant.com/)**
+
 ## What You Have Now:
 
 ### ✅ **Complete S3 Storage Module**
-A production-ready Django app for document management with:
+A production-ready Django app for document management in Evol Assistant CMS with:
 - Multi-region S3 storage (Australia + India)
 - Secure file upload/download with presigned URLs
 - AI-powered document processing (OCR ready)

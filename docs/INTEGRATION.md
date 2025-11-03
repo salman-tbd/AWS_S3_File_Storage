@@ -1,6 +1,8 @@
 # Integration Guide - Merging S3 Storage into Your Main Application
 
-This guide will help you integrate the S3 storage module into your existing Django application.
+**Part of [Evol Assistant Customer Management System (CMS)](https://evolassistant.com/)**
+
+This guide will help you integrate the S3 storage module into the Evol Assistant CMS platform.
 
 ---
 

@@ -1,8 +1,10 @@
 # AWS S3 Storage Integration Module
 
-**Purpose:** Modular S3 document storage for Immigration/Migration Management System
+**Part of:** [Evol Assistant Customer Management System (CMS)](https://evolassistant.com/)
 
-This module provides production-ready AWS S3 integration for your Django application with:
+**Purpose:** Modular S3 document storage for Evol Assistant CMS
+
+This module provides production-ready AWS S3 integration for the Evol Assistant platform with:
 - ✅ Multi-region support (Australia + India)
 - ✅ Secure document upload/download
 - ✅ Celery-based async document processing
@@ -138,7 +140,18 @@ For 500GB storage + 100GB egress/month:
 
 ## 📝 License
 
-Internal use - Migration Zone CRM
+Internal use - Evol Assistant CMS
+
+---
+
+## 🌐 Evol Assistant Ecosystem
+
+This S3 storage module is part of the **Evol Assistant Customer Management System**:
+
+- **Main Website:** [https://evolassistant.com/](https://evolassistant.com/)
+- **Frontend:** [https://www.evolassistant.com/](https://www.evolassistant.com/)
+- **Backend API:** [api.evolassistant.com](https://api.evolassistant.com/)
+- **Repository:** [github.com/salman-tbd/AWS_S3_File_Storage](https://github.com/salman-tbd/AWS_S3_File_Storage)
 
 ---
 
